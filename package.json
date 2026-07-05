@@ -1,0 +1,8 @@
+{
+  "name": "birthday",
+  "private": true,
+  "scripts": {
+    "start": "npx --yes serve -l 5173",
+    "test": "node test-site.mjs"
+  }
+}
