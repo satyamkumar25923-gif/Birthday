@@ -1,8 +1,13 @@
 {
   "name": "birthday",
   "private": true,
+  "homepage": "https://satyamkumar25923-gif.github.io/Birthday",
   "scripts": {
     "start": "npx --yes serve -l 5173",
+    "deploy": "gh-pages -d .",
     "test": "node test-site.mjs"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.3.0"
   }
 }
