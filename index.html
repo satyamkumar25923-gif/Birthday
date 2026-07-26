@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Happy Birthday Sakshi 🎂</title>
+<title>Happy Birthday Radio 🎂</title>
 
 <!-- ============================================================
      HOW TO CUSTOMIZE THIS SITE (read me first!)
@@ -238,7 +238,7 @@
 const { useState, useEffect, useRef, useCallback } = React;
 
 /* ======================= CUSTOMIZE ME ======================= */
-const FRIEND_NAME = "Sakshi"; // <-- FRIEND_NAME: change to your friend's real name
+const FRIEND_NAME = "Radio"; // <-- FRIEND_NAME: change to your friend's real name
 /* ============================================================= */
 
 // ---------- QUESTIONS DATA (edit freely) ----------
@@ -277,20 +277,17 @@ const QUESTIONS = [
 
 // ---------- MEMORY PHOTOS (swap emoji/label/caption with real <img src> photos) ----------
 const MEMORIES = [
-  { emoji: "🎂", caption: "The star of today — you!", rotate: "-rotate-6" },
-  { emoji: "🎈", caption: "Another year more amazing", rotate: "rotate-3" },
-  { emoji: "🎁", caption: "You deserve all the love", rotate: "-rotate-3" },
-  { emoji: "🥳", caption: "Birthday queen energy", rotate: "rotate-6" },
-  { emoji: "✨", caption: "Shining brighter every year", rotate: "-rotate-2" },
-  { emoji: "💖", caption: "So lucky to know you", rotate: "rotate-2" },
+  { src: "photos/1.png", caption: "The star of today — you!", rotate: "-rotate-6", position: "center 42%" },
+  { src: "photos/2.png", caption: "Another year more amazing", rotate: "rotate-3", position: "center 22%" },
+  { src: "photos/3.png", caption: "You deserve all the love", rotate: "-rotate-3", position: "center 38%" },
+  { src: "photos/4.png", caption: "Birthday queen energy", rotate: "rotate-6", position: "center 24%" },
+  { src: "photos/5.png", caption: "Shining brighter every year", rotate: "-rotate-2", position: "center 12%" },
+  { src: "photos/6.png", caption: "So lucky to know you", rotate: "rotate-2", position: "center 20%" },
 ];
-/* To use a real photo instead of an emoji, replace the memory object like:
-   { src: "https://your-image-url.jpg", caption: "...", rotate: "rotate-3" }
-   and update the Polaroid component below to prefer `src` when present. */
 
 // ---------- FINAL MESSAGES (edit freely) ----------
-const TYPEWRITER_LINE = "Today is all about you, Sakshi — and the world is lucky to have you in it.";
-const FINAL_WISH_MESSAGE = "Happy Birthday, Sakshi! 🎂 May this year bring you endless joy, big dreams, sweet surprises, and moments that make you smile. You deserve every bit of happiness today and always. 💖";
+const TYPEWRITER_LINE = "Today is all about you, Radio — and the world is lucky to have you in it.";
+const FINAL_WISH_MESSAGE = "Happy Birthday, Radio! 🎂 May this year bring you endless joy, big dreams, sweet surprises, and moments that make you smile. You deserve every bit of happiness today and always. 💖";
 const FINAL_WISH_GIF = "https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExZjV4dnQxZTEwdXU2anJ3a29oOHZ0MmdtYWt4bnAxa3Z4dzU3c2J2ZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/MMquV2oInK40V86Q7g/giphy.gif";
 const SURPRISE_MESSAGE = "Here's to you on your special day — may every candle you blow bring a wish come true. Happy Birthday! 🎂🎈✨";
 const SURPRISE_GIF = "https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExbGdsMXJzYzNvcjB2cGwxdWN0aXBtMHU1MHQ2cG1ra250NXJyZmc5NSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/IcJ6n6VJNjRNS/giphy.gif";
@@ -666,10 +663,16 @@ function QuestionJourney({ onFinish }) {
 // ---------------- POLAROID ----------------
 function Polaroid({ memory }) {
   return (
-    <div className={`polaroid ${memory.rotate} w-40 sm:w-48`}>
+    <div className={`polaroid ${memory.rotate} w-44 sm:w-52`}>
       <div className="w-full aspect-square bg-gradient-to-br from-blush via-lavender to-skyblue flex items-center justify-center text-5xl rounded-sm overflow-hidden">
         {memory.src ? (
-          <img src={memory.src} alt={memory.caption} className="w-full h-full object-cover" />
+          <img
+            src={memory.src}
+            alt={memory.caption}
+            className="w-full h-full object-cover"
+            style={{ objectPosition: memory.position || "center center" }}
+            loading="lazy"
+          />
         ) : (
           memory.emoji
         )}
